@@ -1,0 +1,10 @@
+list.insert(i,x) insert an item at given position
+list.append(x) Add an item to the end of the list
+list.remove(x) Remove the first item from the list whose value is 'x'
+list.pop([i]) Remove the item at given position and return it
+list.extend(L) Extend the list by appending all the items in the given list
+list.index(x) Return the index in the list of first item whose value is 'x'
+list.count(x) count the number times the 'x' occurs in the list
+list.sort() sort the items of the list, in place
+list.reverse() reverse items in the list, in place
+
