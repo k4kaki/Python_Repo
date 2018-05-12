@@ -1,0 +1,8 @@
+1526135790416	geckodriver	INFO	Listening on 127.0.0.1:59755
+1526135790715	geckodriver::marionette	INFO	Starting browser /usr/lib/firefox/firefox.sh with args ["-marionette"]
+1526135801663	Marionette	INFO	Enabled via --marionette
+1526135809047	Marionette	INFO	Listening on port 34893
+1526135810034	Marionette	WARN	TLS certificate errors will be ignored for this session
+ATTENTION: default value of option force_s3tc_enable overridden by environment.
+
+(/usr/lib/firefox/firefox:8910): dconf-WARNING **: Unable to open /var/lib/snapd/desktop/dconf/profile/user: Permission denied
