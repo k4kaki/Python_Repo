@@ -1,0 +1,7 @@
+fo=open('file.txt')
+line=fo.readline()
+fo.close()
+print(line)
+print(line)
+print(line)
+print(line)

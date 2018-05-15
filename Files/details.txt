@@ -1,0 +1,4 @@
+Name:Company:Location
+Snjv:TCS:Hyd
+Katta:MavenHive:Bnglr
+Vjy:Google:Hyd
