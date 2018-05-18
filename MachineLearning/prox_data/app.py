@@ -22,7 +22,10 @@ def uploader():
           orders = OrderedDict()
           row_values = sh.row_values(rownum)
           orders["ID"] = sh.cell(rownum,0).value
-          
+          orders.update({keys[col_index]: [{"status":sh.cell(rownum, col_index).value,"status_date":"2017-05-18"}] for col_index in range(1,sh.ncols)})
           order_list.append(orders)
+     j = json.dumps(order_list)
+     with open('sample.json','w') as f:
+          f.write(j)
 if __name__ == '__main__':
    app.run(debug = True)
