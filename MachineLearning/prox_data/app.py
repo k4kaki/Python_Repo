@@ -40,8 +40,6 @@ def uploader():
                   if key != "ID":
                       if pxsdb.existing_order_tbl.find_one({"ID":json_dict['ID']})[key][-1]["status"] != json_dict[key][0]["status"]:
                           pxsdb.existing_order_tbl.update({'_id' :pxsdb.existing_order_tbl.find_one({"ID":json_dict['ID']})['_id']}, {'$addToSet' :{key  : {"status":json_dict[key][0]["status"],"status_date":"2020-01-01"}}})
-                      else:
-                          print("Same status")
           else:
               pxsdb.existing_order_tbl.insert(json_dict)
       return render_template('upload.html')
