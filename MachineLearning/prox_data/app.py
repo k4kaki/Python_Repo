@@ -33,20 +33,22 @@ def uploader():
               f.write(j)
       except XLRDError as e:
           return "The format of the file is not LEGAL"
-      client = MongoClient('34.219.47.108',27017)
-      pxsdb=client.sample_DB
-      current_json=json.loads(open('sample.json').read())
-      order_id=pxsdb.existing_order_tbl.distinct("ID")
-      for json_dict in current_json:
-          if json_dict["ID"] in order_id:
-              for key in json_dict:
-                  if key != "ID":
-                      if pxsdb.existing_order_tbl.find_one({"ID":json_dict['ID']})[key][-1]["status"] != json_dict[key][0]["status"]:
-                          pxsdb.existing_order_tbl.update({'_id' :pxsdb.existing_order_tbl.find_one({"ID":json_dict['ID']})['_id']}, {'$addToSet' :{key  : {"status":json_dict[key][0]["status"],"status_date":"2020-01-01"}}})
-          else:
-              pxsdb.existing_order_tbl.insert(json_dict)
-      return render_template('upload.html')
-
+      try:
+          client = MongoClient('34.219.47.108',27017)
+          pxsdb=client.sample_DB
+          current_json=json.loads(open('sample.json').read())
+          order_id=pxsdb.existing_order_tbl.distinct("ID")
+          for json_dict in current_json:
+              if json_dict["ID"] in order_id:
+                  for key in json_dict:
+                      if key != "ID":
+                          if pxsdb.existing_order_tbl.find_one({"ID":json_dict['ID']})[key][-1]["status"] != json_dict[key][0]["status"]:
+                              pxsdb.existing_order_tbl.update({'_id' :pxsdb.existing_order_tbl.find_one({"ID":json_dict['ID']})['_id']}, {'$addToSet' :{key  : {"status":json_dict[key][0]["status"],"status_date":"2020-01-01"}}})
+              else:
+                  pxsdb.existing_order_tbl.insert(json_dict)
+          return render_template('upload.html')
+      except:
+          return "Something went wrong either in MongoDB Conn or in the Coe"
 
 if __name__ == '__main__':
    app.run(debug = True)
